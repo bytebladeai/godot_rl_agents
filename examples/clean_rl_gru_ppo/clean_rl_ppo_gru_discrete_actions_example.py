@@ -210,7 +210,7 @@ if __name__ == "__main__":
         next_obs, _ = envs.reset(seed=args.seed)
         next_obs = torch.Tensor(next_obs).to(device)
         next_done = torch.zeros(args.num_envs).to(device)
-        for i in range(500):
+        for i in range(args.total_timesteps):
             with torch.no_grad():
                 action, logprob, _, value, next_rnn_state = inference_agent.get_action_and_value(
                     next_obs, next_rnn_state, next_done
